@@ -14,73 +14,73 @@ using Microsoft.OpenApi.Models;
 
 namespace application
 {
-  public class Startup
-  {
-    public Startup(IConfiguration configuration)
-    {
-      Configuration = configuration;
-    }
-
-    public IConfiguration Configuration { get; }
-
-    // This method gets called by the runtime. Use this method to add services to the container.
-    public void ConfigureServices(IServiceCollection services)
-    {
-      ConfigureService.ConfigureDependenciesService(services);
-      ConfigureRepository.ConfigureDependenciesRepository(services);
-      services.AddControllers();
-      services.AddSwaggerGen(
-        c =>
-        {
-          c.SwaggerDoc("v1", new OpenApiInfo
-          {
-            Version = "v1",
-            Title = "Curso API .NET Core 3.1",
-            Description = "Arquitetura DDD",
-            TermsOfService = new Uri("http://github.com/joaovitors1g"),
-            Contact = new OpenApiContact
-            {
-              Name = "João Vitor",
-              Email = "joao@email.com",
-              Url = new Uri("http://github.com/joaovitors1g")
-            },
-            License = new OpenApiLicense
-            {
-              Name = "Termos de Uso da API",
-              Url = new Uri("http://github.com/joaovitors1g")
-            }
-          }
-          );
-        }
-      );
-    }
-
-    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-    {
-      if (env.IsDevelopment())
+   public class Startup
+   {
+      public Startup(IConfiguration configuration)
       {
-        app.UseDeveloperExceptionPage();
+         Configuration = configuration;
       }
 
-      app.UseSwagger();
+      public IConfiguration Configuration { get; }
 
-      app.UseSwaggerUI(
-        c =>
-        {
-          c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso API .NET Core 3.1");
-          c.RoutePrefix = string.Empty;
-        }
-      );
-
-      app.UseRouting();
-
-      app.UseAuthorization();
-
-      app.UseEndpoints(endpoints =>
+      // This method gets called by the runtime. Use this method to add services to the container.
+      public void ConfigureServices(IServiceCollection services)
       {
-        endpoints.MapControllers();
-      });
-    }
-  }
+         ConfigureService.ConfigureDependenciesService(services);
+         ConfigureRepository.ConfigureDependenciesRepository(services);
+         services.AddControllers();
+         services.AddSwaggerGen(
+           c =>
+           {
+              c.SwaggerDoc("v1", new OpenApiInfo
+              {
+                 Version = "v1",
+                 Title = "Curso API .NET Core 3.1",
+                 Description = "Arquitetura DDD",
+                 TermsOfService = new Uri("http://github.com/joaovitors1g"),
+                 Contact = new OpenApiContact
+                 {
+                    Name = "João Vitor",
+                    Email = "joao@email.com",
+                    Url = new Uri("http://github.com/joaovitors1g")
+                 },
+                 License = new OpenApiLicense
+                 {
+                    Name = "Termos de Uso da API",
+                    Url = new Uri("http://github.com/joaovitors1g")
+                 }
+              }
+           );
+           }
+         );
+      }
+
+      // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+      public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+      {
+         if (env.IsDevelopment())
+         {
+            app.UseDeveloperExceptionPage();
+         }
+
+         app.UseSwagger();
+
+         app.UseSwaggerUI(
+           c =>
+           {
+              c.SwaggerEndpoint("/swagger/v1/swagger.json", "Curso API .NET Core 3.1");
+              c.RoutePrefix = string.Empty;
+           }
+         );
+
+         app.UseRouting();
+
+         app.UseAuthorization();
+
+         app.UseEndpoints(endpoints =>
+         {
+            endpoints.MapControllers();
+         });
+      }
+   }
 }
