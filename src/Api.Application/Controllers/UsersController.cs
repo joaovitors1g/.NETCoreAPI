@@ -18,7 +18,7 @@ namespace Api.Application.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult> GetAll()
+    public async Task<ActionResult> Index()
     {
       if (!ModelState.IsValid)
       {
@@ -37,7 +37,7 @@ namespace Api.Application.Controllers
 
     [HttpGet]
     [Route("{id}", Name = "GetWithId")]
-    public async Task<ActionResult> Get(Guid id)
+    public async Task<ActionResult> View(Guid id)
     {
       if (!ModelState.IsValid)
       {
