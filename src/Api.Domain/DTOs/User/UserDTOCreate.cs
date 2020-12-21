@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Api.Domain.DTOs.User
 {
-    public class UserDTO
+    public class UserDTOCreate
     {
         [Required(ErrorMessage = "O campo nome é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter no máximo {1} caracteres.")]
