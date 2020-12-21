@@ -20,7 +20,10 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "DB_CONNECTION": "Server=localhost;Port=3306;Database=DotnetAPI;Uid=root;Pwd=123",
+                "DATABASE": "MariaDB",
+                "EXECUTE_MIGRATIONS": "true"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
