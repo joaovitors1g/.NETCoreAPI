@@ -50,7 +50,13 @@ namespace Api.Application.Controllers
 
          try
          {
-            return Ok(await _service.Get(id));
+            var user = await _service.Get(id);
+
+            if (user == null) {
+               return NotFound();
+            }
+            
+            return Ok(user);
          }
          catch (ArgumentException ex)
          {
@@ -60,7 +66,7 @@ namespace Api.Application.Controllers
 
       [Authorize("Bearer")]
       [HttpPost]
-      public async Task<ActionResult> Create([FromBody] UserDTO user)
+      public async Task<ActionResult> Create([FromBody] UserDTOCreate user)
       {
          if (!ModelState.IsValid)
          {
@@ -89,7 +95,7 @@ namespace Api.Application.Controllers
 
       [Authorize("Bearer")]
       [HttpPut]
-      public async Task<ActionResult> Update([FromBody] UserDTO user)
+      public async Task<ActionResult> Update([FromBody] UserDTOUpdate user)
       {
          if (!ModelState.IsValid)
          {
